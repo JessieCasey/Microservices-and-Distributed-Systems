@@ -10,6 +10,7 @@
   <version>1.0-SNAPSHOT</version>
   <modules>
     <module>customer-service</module>
+      <module>fraud-service</module>
   </modules>
 
   <name>distributed-systems</name>
