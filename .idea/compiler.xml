@@ -8,7 +8,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="fraud-service" />
+        <module name="clients" />
         <module name="customer-service" />
+        <module name="eureka-server" />
       </profile>
     </annotationProcessing>
   </component>
