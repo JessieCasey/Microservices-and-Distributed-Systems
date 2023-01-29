@@ -1,4 +1,4 @@
-package com.doubleA;
+package com.doubleA.fraud;
 
 public record FraudResponse(Boolean isFraudster) {
 }
