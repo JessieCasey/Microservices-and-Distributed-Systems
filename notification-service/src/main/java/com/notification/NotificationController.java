@@ -1,4 +1,4 @@
-package com.doubleA;
+package com.notification;
 
 import com.doubleA.notification.NotificationRequest;
 import lombok.AllArgsConstructor;

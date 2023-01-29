@@ -1,4 +1,4 @@
-package com.doubleA;
+package com.amqp;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.core.AmqpTemplate;

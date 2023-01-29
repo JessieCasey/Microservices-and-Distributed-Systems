@@ -1,4 +1,4 @@
-package com.doubleA;
+package com.notification;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

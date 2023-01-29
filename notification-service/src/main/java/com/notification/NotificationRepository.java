@@ -1,4 +1,4 @@
-package com.doubleA;
+package com.notification;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

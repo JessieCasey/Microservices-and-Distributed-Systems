@@ -1,5 +1,6 @@
 package com.doubleA;
 
+import com.amqp.RabbitMQMessageProducer;
 import com.doubleA.fraud.FraudClient;
 import com.doubleA.fraud.FraudResponse;
 import com.doubleA.notification.NotificationClient;
@@ -12,7 +13,8 @@ public record CustomerService(
         CustomerRepository customerRepository,
         RestTemplate restTemplate,
         FraudClient fraudClient,
-        NotificationClient notificationClient
+        NotificationClient notificationClient,
+        RabbitMQMessageProducer rabbitMQMessageProducer
 ) {
 
     public void registerCustomer(CustomerRegistrationRequest request) {
@@ -30,12 +32,15 @@ public record CustomerService(
             throw new IllegalStateException("Fraudster");
         }
 
-        notificationClient.sendNotification(
-                new NotificationRequest(
-                        customer.getId(),
-                        customer.getEmail(),
-                        String.format("Hi! %s, welcome to our...", customer.getFirstname())
-                )
+        NotificationRequest notificationRequest = new NotificationRequest(
+                customer.getId(),
+                customer.getEmail(),
+                String.format("Hi! %s, welcome to our...", customer.getFirstname())
+        );
+        rabbitMQMessageProducer.publisher(
+                notificationRequest,
+                "internal.exchange",
+                "internal.notification.routing-key"
         );
 
     }
