@@ -1,2 +1,3 @@
 # Microservices-and-Distributed-Systems
-Microservices and distributed systems
+
+![Diagram of the project](./diagram.png)
