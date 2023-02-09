@@ -11,13 +11,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 
 @Configuration
-@Getter
 public class NotificationConfig {
 
     @Value("${rabbitmq.exchanges.internal}")
     private String internalExchange;
 
-    @Value("${rabbitmq.queue.notification]")
+    @Value("${rabbitmq.queues.notification}")
     private String notificationQueue;
 
     @Value("${rabbitmq.routing-keys.internal-notification}")
@@ -38,7 +37,19 @@ public class NotificationConfig {
         return BindingBuilder
                 .bind(notificationQueue())
                 .to(internalTopicExchange())
-                .with(internalNotificationRoutingKey);
+                .with(this.internalNotificationRoutingKey);
     }
 
+
+    public String getInternalExchange() {
+        return internalExchange;
+    }
+
+    public String getNotificationQueue() {
+        return notificationQueue;
+    }
+
+    public String getInternalNotificationRoutingKey() {
+        return internalNotificationRoutingKey;
+    }
 }
